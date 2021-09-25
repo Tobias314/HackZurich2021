@@ -38,40 +38,39 @@ require(["esri/config",
       container: "viewDiv" // Div element
     });
 
+
+
     const serviceAreaUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World";
 
-
-
-
-    const graphicsLayer = new GraphicsLayer();
-    map.add(graphicsLayer);
-    // Create a polygon geometry
-    const polygon = {
-        type: "polygon",
-        rings: [[
-            [7.1110511, 50.5446766], //Longitude, latitude
-            [7.1280511, 50.5446766], //Longitude, latitude
-            [7.1280511, 50.5499766], //Longitude, latitude
-            [7.1110511, 50.5499766],   //Longitude, latitude
-            [7.1110511, 50.5446766]  //Longitude, latitude
-        ]]
-    };
-    const simpleFillSymbol = {
-        type: "simple-fill",
-        color: [227, 139, 79, 0.8],  // Orange, opacity 80%
-        outline: {
-            color: [255, 255, 255],
-            width: 1
-        }
-    };
-    const polygonGraphic = new Graphic({
-      geometry: polygon,
-      symbol: simpleFillSymbol,
-    });
-    graphicsLayer.add(polygonGraphic);
-
-
-
+    var alarmButton = document.getElementById("Alarm");
+    alarmButton.addEventListener("click", function(){
+      const graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
+      // Create a polygon geometry
+      const polygon = {
+          type: "polygon",
+          rings: [[
+              [7.1110511, 50.5446766], //Longitude, latitude
+              [7.1280511, 50.5446766], //Longitude, latitude
+              [7.1280511, 50.5499766], //Longitude, latitude
+              [7.1110511, 50.5499766], //Longitude, latitude
+              [7.1110511, 50.5446766]  //Longitude, latitude
+          ]]
+      };
+      const simpleFillSymbol = {
+          type: "simple-fill",
+          color: [227, 139, 79, 0.8],  // Orange, opacity 80%
+          outline: {
+              color: [255, 255, 255],
+              width: 1
+          }
+      };
+      const polygonGraphic = new Graphic({
+        geometry: polygon,
+        symbol: simpleFillSymbol,
+      });
+      graphicsLayer.add(polygonGraphic);
+    })
 
     view.on("click", function(event){
         const locationGraphic = createGraphic(event.mapPoint);
