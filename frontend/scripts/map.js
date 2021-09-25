@@ -37,13 +37,26 @@ require(["esri/config",
       zoom: 13, // Zoom level
       container: "viewDiv" // Div element
     });
+	
 
-
-
+	
+	
+	
     const serviceAreaUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World";
 
     var alarmButton = document.getElementById("Alarm");
-    alarmButton.addEventListener("click", function(){
+    alarmButton.addEventListener("click", async function() {
+		
+		// trying to pull JSON file
+		const response = await fetch('http://localhost:8000/floodarea');
+	  const myJson = await response.json(); //extract JSON from the http response
+	  // do something with myJson
+	  mydata = JSON.parse(data);
+		alert(mydata[0].x);
+		alert(mydata[0].y);
+		alert(mydata[1].x);
+		alert(mydata[1].y);
+		
       const graphicsLayer = new GraphicsLayer();
       map.add(graphicsLayer);
       // Create a polygon geometry
