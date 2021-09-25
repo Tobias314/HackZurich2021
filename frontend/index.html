@@ -1,46 +1,46 @@
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Xylem: Your Risk Dashboard</title>
 
 
-    <link rel="stylesheet" type = "text/css" href = "style/main.css" media = "screen"/>
+		<link rel="stylesheet" type = "text/css" href = "style/main.css" media = "screen"/>
 	<!-- ArcGIS stylying import-->
-    <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.21/"></script>
-    <script type="text/javascript" src="scripts/map.js"></script>
-    <script type="text/javascript" src="scripts/safe_supplies_points.js"></script>
+		<link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
+		<script src="https://js.arcgis.com/4.21/"></script>
+		<script type="text/javascript" src="scripts/map.js"></script>
+		<script type="text/javascript" src="scripts/login.js"></script>
+		<script type="text/javascript" src="scripts/safe_supplies_points.js"></script>
 	<!--Bootstrap code import-->
 	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
   <header>
-	<nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
+	<nav class="navbar navbar-light " style="background-color: #e3f2fd;">
 		<a class="navbar-brand">
 			<img src="1200px-Xylem_Logo.svg.png" width="7%"  height="5%" alt="Xylem_Logo"> &nbsp |&nbspYour Risk
 		</a>
 	  <!--For making home lables ect-->
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		 <div class="navbar-nav">
-			<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-			<a class="nav-item nav-link" href="#">Features</a>
-			<a class="nav-item nav-link" href="#">Pricing</a>
-			<a class="nav-item nav-link disabled" href="#">Disabled</a>
-		 </div>
-		</div>
+		
+			<a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="subPages/climatePage.html">Climate Simulator</a>
+			<a class="nav-item nav-link" href="subPages/sustainability.html">Sustainability Goals</a>
+	
 		<!--Search bar-->
+		<!--
 		<form class="form-inline">
 			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
+		-->
 		<!-- Login Page-->
 		<button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 		<div id="id01" class="modal">
@@ -69,10 +69,17 @@
 	</nav>
   </header>
   <h2>
-	Welcome back [User Name Here],
+	&nbsp Welcome back Ellen,
   </h2>
-  <p style="margin-left:10%; margin-right:10%;">You are veiwing data for Bad Neuenahr</p>
-
+  <div>
+  <p style="padding:10px;display:inline-block">You are veiwing data for Bad Neuenahr. Want to veiw somewhere different?</p>
+<!--Search bar-->
+		
+		<form class="form-inline" style="display:inline-block">
+			<input class="form-control mr-sm-2" type="search" placeholder="Enter Location" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div>	
   <!--MAP and updates-->
     <div id="viewDiv" style="padding-top:10px; padding-bottom:20px;height:75%; width:75%; float:left"></div>
     <div id="viewDiv2" style="padding-top:10px; padding-bottom:20px;height:75%; width:75%; float:left"></div>
@@ -102,16 +109,7 @@
 	   </div>
 
 	<script>
-		// Get the modal
-		var modal = document.getElementById('id01');
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-
+	
 
 
 
