@@ -9,7 +9,8 @@
 	<!-- ArcGIS stylying import-->
     <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.21/"></script>
-    <script type="text/javascript" src="scripts/map.js"></script>  
+    <script type="text/javascript" src="scripts/map.js"></script>
+    <script type="text/javascript" src="scripts/safe_supplies_points.js"></script>
 	<!--Bootstrap code import-->
 	<!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,7 +20,7 @@
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
-  
+
   <body>
   <header>
 	<nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
@@ -74,6 +75,7 @@
 
   <!--MAP and updates-->
     <div id="viewDiv" style="padding-top:10px; padding-bottom:20px;height:75%; width:75%; float:left"></div>
+    <div id="viewDiv2" style="padding-top:10px; padding-bottom:20px;height:75%; width:75%; float:left"></div>
 	<div class="card" style="width: 25%; max-height: float:right">
 		  <div class="card-body">
 			<h4 class="card-title">Recent Alerts </h4>
@@ -86,7 +88,7 @@
 			</div>
 	</div>
 	<br />
-	
+
 		<div class="action_button">
 			<!--Button for reporting-->
 			<div class="action_button report" id="Report_DOWN" style="display:inline-block; max-width:50%; padding: 20px">
@@ -98,7 +100,7 @@
 				<button> Show the flooded area. </button>
 			</div>
 	   </div>
-	  
+
 	<script>
 		// Get the modal
 		var modal = document.getElementById('id01');
@@ -109,40 +111,40 @@
 				modal.style.display = "none";
 			}
 		}
-		
-		
-		
-		
+
+
+
+
 		var down = document.getElementById("Report_DOWN");
-					
+
 			// Create a break line element
-			var br = document.createElement("br"); 
+			var br = document.createElement("br");
 			function Report_DOWN() {
-						
+
 			// Create a form synamically
 			var form = document.createElement("form");
 			form.setAttribute("method", "post");
 			form.setAttribute("action", "submit.php");
-		  
+
 			// Create an input element for Full Name
 			var FN = document.createElement("input");
 			FN.setAttribute("type", "text");
 			FN.setAttribute("name", "FullName");
 			FN.setAttribute("placeholder", "Full Name");
-		  
-		  
+
+
 			 // Create an input element for emailID
 			 var EID = document.createElement("input");
 			 EID.setAttribute("type", "text");
 			 EID.setAttribute("name", "emailID");
 			 EID.setAttribute("placeholder", "E-Mail ID");
-		  
+
 			  // Create an input element for Location
 			  var PWD = document.createElement("input");
 			  PWD.setAttribute("type", "text");
 			  PWD.setAttribute("name", "Location");
 			  PWD.setAttribute("placeholder", "Location");
-		  
+
 			   // Create an input element for type of risk
 			   var RPWD = document.createElement("input");
 			   RPWD.setAttribute("type", "text");
@@ -156,36 +158,36 @@
 				 //var theFormItself = document.getElementById('Report_DOWN');
 				//theFormItself.style.display = 'none';
                 // Append the full name input to the form
-                form.appendChild(FN); 
-                  
+                form.appendChild(FN);
+
                 // Inserting a line break
-                form.appendChild(br.cloneNode()); 
-         
-                  
+                form.appendChild(br.cloneNode());
+
+
                 // Append the emailID to the form
-                form.appendChild(EID); 
-                form.appendChild(br.cloneNode()); 
- 
+                form.appendChild(EID);
+                form.appendChild(br.cloneNode());
+
                 // Append the Password to the form
-                form.appendChild(PWD); 
-                form.appendChild(br.cloneNode()); 
-                  
+                form.appendChild(PWD);
+                form.appendChild(br.cloneNode());
+
                 // Append the ReEnterPassword to the form
-                form.appendChild(RPWD); 
-                form.appendChild(br.cloneNode()); 
-                  
+                form.appendChild(RPWD);
+                form.appendChild(br.cloneNode());
+
                 // Append the submit button to the form
-                form.appendChild(s); 
-  
+                form.appendChild(s);
+
                 document.getElementsByTagName("body")[0]
                .appendChild(form);
-			   
+
             }
-			
-			
+
+
 			function refreshPage(){
 				window.location.reload();
-			} 
+			}
 </script>
   </body>
 </html>
