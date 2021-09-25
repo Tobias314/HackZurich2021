@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+    <title>Xylem: Your Risk Dashboard</title>
 
 
     <link rel="stylesheet" type = "text/css" href = "style/main.css" media = "screen"/>
@@ -33,15 +33,15 @@
 			<a class="nav-item nav-link disabled" href="#">Disabled</a>
 		 </div>
 		</div>
-		
+		<!--Search bar-->
 		<form class="form-inline">
 			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
-		
+		<!-- Login Page-->
 		<button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 		<div id="id01" class="modal">
-			<form class="modal-content animate" action="/action_page.php" method="post">
+			<form class="modal-content animate" action="/action_page.php" method="post" style="width:50%">
 				<div class="imgcontainer">
 				  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 				  <img src="1200px-Xylem_Logo.svg.png" alt="Xylem logo" class="avatar">
@@ -65,7 +65,12 @@
 		</div>
 	</nav>
   </header>
-    <div id="viewDiv" style="padding-top:30px;height:50%; width:75%; margin: auto"></div>
+  <h2>
+	Welcome back [User Name Here],
+  </h2>
+  <p style="margin-left:10%; margin-right:10%;">You are veiwing data for Bad Neuenahr</p>
+  <!--MAP-->
+    <div id="viewDiv" style="padding-top:10px;height:50%; width:75%; margin: auto"></div>
 	
 	
 	<script>
@@ -78,6 +83,7 @@
 				modal.style.display = "none";
 			}
 		}
+		
 </script>
   </body>
 </html>
