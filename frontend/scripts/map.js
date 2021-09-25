@@ -3,15 +3,15 @@ require(["esri/config",
  "esri/views/MapView",
   "esri/Basemap",
    "esri/layers/VectorTileLayer",
-   "esri/layers/TileLayer",
    "esri/rest/serviceArea",
    "esri/rest/support/ServiceAreaParameters",
    "esri/rest/support/FeatureSet",
-   "esri/Graphic",
    "esri/rest/networkService",
-   "esri/layers/GraphicsLayer"
+   "esri/Graphic",
+   "esri/layers/GraphicsLayer",
   ],
- function (esriConfig,Map, MapView, Basemap, VectorTileLayer, TileLayer, serviceArea, ServiceAreaParams, FeatureSet, Graphic, networkService, GraphicsLayer) {
+ function (esriConfig,Map, MapView,Basemap, VectorTileLayer, 
+  serviceArea, ServiceAreaParams, FeatureSet, networkService, Graphic, GraphicsLayer) {
     esriConfig.apiKey = "AAPK172fad7fe111481a8da5008626ae12a7qj62qoE60E7f9U7R9jV7ZFl1VVr2EEeIuQ3yoJ04Zag7rctohS6J7qGbhA3ELnN_";
 
     const baseMapeVectorTileLayer = new VectorTileLayer({
@@ -39,7 +39,8 @@ require(["esri/config",
     });
 	
 
-	
+    const graphicsLayer = new GraphicsLayer();
+    map.add(graphicsLayer);
 	
 	
     const serviceAreaUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World";
@@ -47,29 +48,42 @@ require(["esri/config",
     var alarmButton = document.getElementById("Alarm");
     alarmButton.addEventListener("click", async function() {
 		
-		// trying to pull JSON file
-		const response = await fetch('http://localhost:8000/floodarea');
-	  const myJson = await response.json(); //extract JSON from the http response
-	  // do something with myJson
-	  mydata = JSON.parse(data);
-		alert(mydata[0].x);
-		alert(mydata[0].y);
-		alert(mydata[1].x);
-		alert(mydata[1].y);
-		
-      const graphicsLayer = new GraphicsLayer();
-      map.add(graphicsLayer);
-      // Create a polygon geometry
+      // trying to pull JSON file
+      const response = await fetch('http://localhost:8000/floodarea');
+      const polygonJson = await response.json(); //extract JSON from the http response
+      // do something with myJson
+      //mydata = JSON.parse(myJson);
+      var rings = []
+      polygonJson.polygons.forEach(polygon => {
+        rings.push(polygon.shell);
+        polygon.holes.forEach(hole => rings.push(hole));
+      });
+      console.log(rings);
+       //Create a polygon geometry
       const polygon = {
-          type: "polygon",
-          rings: [[
-              [7.1110511, 50.5446766], //Longitude, latitude
-              [7.1280511, 50.5446766], //Longitude, latitude
-              [7.1280511, 50.5499766], //Longitude, latitude
-              [7.1110511, 50.5499766], //Longitude, latitude
-              [7.1110511, 50.5446766]  //Longitude, latitude
-          ]]
-      };
+        type: "polygon",
+       rings: rings
+     };
+     /*const polygon = {
+      type: "polygon",
+      rings: [
+              [
+                [ 7.259128276367913, 50.591699070919566], 
+                [ 7.259128276367913, 50.561699070919566], 
+                [ 7.159128276367913, 50.561699070919566],
+                [ 7.159128276367913, 50.591699070919566],
+                [ 7.259128276367913, 50.591699070919566]
+              ],
+              [
+                [ 7.189128276367913, 50.571699070919566], //Longitude, latitude
+                [ 7.229128276367913, 50.571699070919566], //Longitude, latitude
+                [ 7.229128276367913, 50.588699070919566], //Longitude, latitude
+                [ 7.189128276367913, 50.588699070919566],   //Longitude, latitude
+                [ 7.189128276367913, 50.571699070919566]
+              ]
+            ]  //Longitude, latitude
+
+   };*/
       const simpleFillSymbol = {
           type: "simple-fill",
           color: [227, 139, 79, 0.8],  // Orange, opacity 80%

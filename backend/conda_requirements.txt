@@ -1,0 +1,10 @@
+numpy
+matplotlib
+scikit-image
+geopandas
+shapely
+rasterio
+osmnx
+fastapi
+uvicorn
+cv2
