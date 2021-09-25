@@ -8,8 +8,10 @@ require(["esri/config",
    "esri/rest/support/ServiceAreaParameters",
    "esri/rest/support/FeatureSet",
    "esri/Graphic",
-   "esri/rest/networkService"],
- function (esriConfig,Map, MapView, Basemap, VectorTileLayer, TileLayer, serviceArea, ServiceAreaParams, FeatureSet, Graphic, networkService) {
+   "esri/rest/networkService",
+   "esri/layers/GraphicsLayer"
+  ],
+ function (esriConfig,Map, MapView, Basemap, VectorTileLayer, TileLayer, serviceArea, ServiceAreaParams, FeatureSet, Graphic, networkService, GraphicsLayer) {
     esriConfig.apiKey = "AAPK172fad7fe111481a8da5008626ae12a7qj62qoE60E7f9U7R9jV7ZFl1VVr2EEeIuQ3yoJ04Zag7rctohS6J7qGbhA3ELnN_";
 
     const baseMapeVectorTileLayer = new VectorTileLayer({
@@ -37,6 +39,39 @@ require(["esri/config",
     });
 
     const serviceAreaUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World";
+
+
+
+
+    const graphicsLayer = new GraphicsLayer();
+    map.add(graphicsLayer);
+    // Create a polygon geometry
+    const polygon = {
+        type: "polygon",
+        rings: [[
+            [7.1110511, 50.5446766], //Longitude, latitude
+            [7.1280511, 50.5446766], //Longitude, latitude
+            [7.1280511, 50.5499766], //Longitude, latitude
+            [7.1110511, 50.5499766],   //Longitude, latitude
+            [7.1110511, 50.5446766]  //Longitude, latitude
+        ]]
+    };
+    const simpleFillSymbol = {
+        type: "simple-fill",
+        color: [227, 139, 79, 0.8],  // Orange, opacity 80%
+        outline: {
+            color: [255, 255, 255],
+            width: 1
+        }
+    };
+    const polygonGraphic = new Graphic({
+      geometry: polygon,
+      symbol: simpleFillSymbol,
+    });
+    graphicsLayer.add(polygonGraphic);
+
+
+
 
     view.on("click", function(event){
         const locationGraphic = createGraphic(event.mapPoint);
@@ -66,7 +101,6 @@ require(["esri/config",
             features: [locationGraphic]
           });
           const networkDescription = await networkService.fetchServiceDescription(url);
-          console.log(networkDescription)
           // Travel mode should be walking
           travelMode = networkDescription.supportedTravelModes.find(
               (travelMode) => travelMode.name === "Walking Time"
