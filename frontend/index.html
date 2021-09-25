@@ -83,18 +83,21 @@
 			<li>Hurricane reported to be hitting Florida at 12 noon <a href="#" class="card-link">See more</a></li>
 			</ul>
 			<a href="#" class="card-link">See all recent</a>
+			</div>
 	</div>
-	</div>
-		<!--Button for reporting-->
-		<div id="Report_DOWN" style="position: relative; left:40%; max-width:50%">
-			<button onClick="Report_DOWN()" >  Report a local risk event </button>
-		</div>
+	<br />
+	
+		<div class="action_button">
+			<!--Button for reporting-->
+			<div class="action_button report" id="Report_DOWN" style="display:inline-block; max-width:50%; padding: 20px">
+				<button onClick="Report_DOWN()" ondblclick="refreshPage()">  Report a local risk event </button>
+			</div>
 
-		<!--Button for reporting-->
-		<div id="Alarm" style="position: relative; left:40%; max-width:50%">
-			<button> Show the flooded area. </button>
-		</div>
-	   
+			<!--Alert button-->
+			<div  class="action_button alarm" id="Alarm" style="display:inline-block; left:40%; max-width:50%;padding: 20px">
+				<button> Show the flooded area. </button>
+			</div>
+	   </div>
 	  
 	<script>
 		// Get the modal
@@ -150,8 +153,8 @@
                 s.setAttribute("type", "submit");
                 s.setAttribute("value", "Submit");
                  // HIDING THE FORM ONCE POSTED
-				 var theFormItself = document.getElementById('Report_DOWN');
-				theFormItself.style.display = 'none';
+				 //var theFormItself = document.getElementById('Report_DOWN');
+				//theFormItself.style.display = 'none';
                 // Append the full name input to the form
                 form.appendChild(FN); 
                   
@@ -179,6 +182,10 @@
 			   
             }
 			
+			
+			function refreshPage(){
+				window.location.reload();
+			} 
 </script>
   </body>
 </html>
