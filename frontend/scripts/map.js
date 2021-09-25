@@ -25,23 +25,21 @@ require(["esri/config",
             baseMapeVectorTileLayer,
         ]
       });
-    
+
       const map = new Map({
         basemap: basemap,
       });
 
     const view = new MapView({
       map: map,
-      
+
       center: [7.1110511, 50.5446766], // Longitude, latitude
       zoom: 13, // Zoom level
       container: "viewDiv" // Div element
     });
-	
 
     const graphicsLayer = new GraphicsLayer();
     map.add(graphicsLayer);
-	
 	
     const serviceAreaUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World";
 
@@ -60,33 +58,14 @@ require(["esri/config",
       });
       console.log(rings);
        //Create a polygon geometry
+
       const polygon = {
         type: "polygon",
        rings: rings
      };
-     /*const polygon = {
-      type: "polygon",
-      rings: [
-              [
-                [ 7.259128276367913, 50.591699070919566], 
-                [ 7.259128276367913, 50.561699070919566], 
-                [ 7.159128276367913, 50.561699070919566],
-                [ 7.159128276367913, 50.591699070919566],
-                [ 7.259128276367913, 50.591699070919566]
-              ],
-              [
-                [ 7.189128276367913, 50.571699070919566], //Longitude, latitude
-                [ 7.229128276367913, 50.571699070919566], //Longitude, latitude
-                [ 7.229128276367913, 50.588699070919566], //Longitude, latitude
-                [ 7.189128276367913, 50.588699070919566],   //Longitude, latitude
-                [ 7.189128276367913, 50.571699070919566]
-              ]
-            ]  //Longitude, latitude
-
-   };*/
       const simpleFillSymbol = {
           type: "simple-fill",
-          color: [227, 139, 79, 0.8],  // Orange, opacity 80%
+          color: [211, 239, 253, 0.8],  // Orange, opacity 80%
           outline: {
               color: [255, 255, 255],
               width: 1

@@ -31,7 +31,7 @@ app.add_middleware(
 
 
 height_map_path = "../../data/DTM_Ahrweiler.tif"
-FLOOD_HEIGHT = 20
+FLOOD_HEIGHT = 5
 
 height_map_data_set = rio.open(height_map_path)
 webmap_crs =  CRS.from_epsg(4326)

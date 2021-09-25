@@ -1,0 +1,182 @@
+<html lang="en">
+<html>
+	<head>
+		<title>Xylem: Crisis support</title>
+		<script type="text/javascript" src="scripts/login.js"></script>
+		<link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
+		<link rel="stylesheet" type = "text/css" href = "style/main.css" media = "screen"/>
+		<!--Bootstrap code import-->
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		
+	<head>
+	</head>
+	<header>
+	<nav class="navbar navbar-light " style="background-color: #e3f2fd;">
+		<a class="navbar-brand">
+			<img src="../1200px-Xylem_Logo.svg.png" width="7%"  height="5%" alt="Xylem_Logo"> &nbsp |&nbspYour Risk
+		</a>
+	  <!--For making home lables ect-->
+		
+			<a class="nav-item nav-link active" href="../index.html">Home <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="crisisSupport.html">Crisis Support</a>
+			<!--<a class="nav-item nav-link" href="climatePage.html">Climate Simulator</a>-->
+			<a class="nav-item nav-link" href="sustainability.html">Sustainability Goals</a>
+	
+		<!--Search bar-->
+		<!--
+		<form class="form-inline">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+		-->
+		<!-- Login Page-->
+		<button class="loginButton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+		<div id="id01" class="modal">
+			<form class="modal-content animate" action="/action_page.php" method="post" style="width:50%">
+				<div class="imgcontainer">
+				  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				  <img src="../1200px-Xylem_Logo.svg.png" alt="Xylem logo" class="avatar">
+				</div>
+
+				<div class="container">
+				  <label for="uname"><b>Username</b></label>
+				  <input type="text" placeholder="Enter Username" name="uname" required>
+
+				  <label for="psw"><b>Password</b></label>
+				  <input type="password" placeholder="Enter Password" name="psw" required>
+				  <button type="submit">Login</button>
+				  <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+				</div>
+
+				<div class="container" style="background-color:#f1f1f1">
+				  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+				  <span class="psw">Forgot <a href="#">password?</a></span>
+				</div>
+			</form>
+		</div>
+	</nav>
+  </header>
+	<body style=" font-family: 'Raleway',sans-serif; font-size: 18px; font-weight: 500; line-height: 32px; margin: 0 0 24px; ">
+		<h1 style="color:#0081a2; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase;">Crisis Support</h1>
+		<p style="padding:20px">We understand that extreeme weather can be scary no matter who you are. It is our mission to help you be as prepared for an event as possible and be there for you when the defences fail. Please see the list below to offer you support and guidance with the next steps following an extreme weather event. We have included links to help you find your nearest support avaliable.
+		<h3 style="color:#0081a2"> Menu </h3>	
+			<ol style="padding-left:90px">
+				<li><a href="#section1">Flooding</a></li>
+				<li><a href="#section2">Hurricanes</a></li>
+				<li><a href="#section3">Fire</a></li>
+				<li><a href="#section4">Tsunami</a></li>
+			</ol>
+		</p>
+		<div style="padding:20px">
+			<H2 style="color:#0081a2; font-weight: 800; line-height: 36px; margin: 0 0 24px; text-align: center;"><A name="section1">Flooding</A></H2>
+				<ol style="padding-left:90px">
+					<li><a href="#">Flood Warnings</a></li>
+					<li><a href="#">Evacuation</a></li>
+					<li><a href="#">Health Precautions</a></li>
+					<li><a href="#">Contamination...</a></li>
+				</ol>
+			<p>DISCLAIMER: The below information on flooding is from https://www.nidirect.gov.uk/articles/what-do-if-flood-happens accessed 25/09 for the purposes of demo at HackZurich. We in no way claim ownership of this information.</p>
+			<h3 id="toc-0">If there is a heavy rain&nbsp;warning</h3>
+				<p>If heavy rain is forecast in your area, you can expect flooding of low lying land and roads. You should check local news, weather forecasts and be aware of water levels in water courses near you.<br>
+				<br>Be prepared to follow any plans you have made to deal with flooding in your area such as:</p>
+				<ul>
+					<li>moving cars, pets, food, valuables and important documents to safety</li>
+					<li>putting flood protection equipment in place</li>
+					<li>turning off gas, electricity and water supplies if it’s safe to do so</li>
+					<li>evacuating your home</li>
+				</ul>
+				<p>To stop water entering your home:</p>
+				<ul>
+					<li>use sandbags and floodboards to prevent water entering through doors and windows</li>
+					<li>seal airbricks with plastic covers,cloths or towels</li>
+					<li>put plugs in sinks and baths and weighing them down with a sandbag, pillowcase or a plastic bag filled with garden soil, or a heavy object</li>
+					<li>block toilets with towels or bed sheets and weigh down lids</li>
+					</ul>
+				<p>If you don’t have valves fitted which allow flow of water in one direction (non-return valves) you should:</p>
+				<ul>
+					<li>plug water inlet pipes with towels or cloths</li>
+					<li>turn off any equipment that uses water (like washing machines and dishwashers)</li>
+					<li>collect the things you need for evacuation</li>
+					<li>stay in a high place with a means of escape</li>
+					<li>avoid electricity sources</li>
+					<li>avoid walking or driving through flood water</li>
+					<li>call 999 immediately if you are in danger<br>&nbsp;</li>
+					<li><a href="/publications/household-flood-plan">Household flood plan</a></li>
+				</ul>
+				<h3 id="toc-1">Evacuation</h3>
+					<p>If the emergency services tell you to evacuate your home, you should leave. Refusing to leave on their advice puts you, your family and people trying to help you at risk.</p>
+					<p>When flooding becomes less, you should:</p>
+					<ul>
+						<li>listen to weather reports and only return to evacuated buildings if you are told it's safe</li>
+						<li>beware of sharp objects and pollution in flood water</li>
+						<li>contact your insurance company immediately and ask their advice before starting to clean up if your property or belongings are damaged</li>
+					</ul>
+					<p>The insurance company&nbsp;might give advice about replacing or clearing away damaged items.</p>
+				<h3 id="toc-2">Health precautions around flooding</h3>
+					<p>Flooding can contain pollutants which can affect your health and well being. There are also risks such as missing manhole covers on roads and pavements and people falling into fast flowing water. Don't eat any food that was in flood water.<br><br>If there was a flood in your home, you should:</p>
+					<ul>
+						<li>wash your hands after contact with flood water, sewage or anything these have contaminated</li>
+						<li>cover cuts or open sores</li>
+						<li>wash children's hands regularly</li>
+						<li>keep children and pets out of contaminated areas</li>
+						<li>use rubber gloves when cleaning up</li>
+						<li>use disinfectant to clean surfaces and tables where you want to put food</li>
+						<li>contact your GP is you or a relative has a stomach upset after flooding</li>
+						<li>decontaminate footwear by washing and treating with a mild disinfectant</li>
+						<li>clean toys with disinfectant&nbsp;</li>
+					</ul>
+				<h3 id="toc-3">Contamination caused by sewage in flood water</h3>
+					<p>Where sewage is clearly visible in flood waters, or in material deposited by flood waters, decontamination should involve:</p>
+					<ul>
+						<li>removing excess liquid (pumping/sweeping)</li>
+						<li>a thorough clean up to remove any debris or faecal contamination</li>
+						<li>leaving the contaminated areas to dry</li>
+						<li>applying a mild disinfectant</li>
+					</ul>
+					<p>Disinfectants should remove all traces of bacteria within 24 to 48 hours.</p>
+				<h3 id="toc-4">Electricity</h3>
+					<p>If any electrical wiring has come into contact with flood water, a qualified electrician will need to check the safety of the system, and the safety of appliances.</p><p>Householders can contact Northern Ireland Electricity (NIE) &nbsp;24 hours a day for advice :</p>
+					<ul>
+						<li>telephone: 03457 643 643</li>
+						<li>minicom: 03457 147 128</li>
+						<li>email: <a href="mailto:customercontact@nie.co.uk" rel="noreferrer">customercontact@nie.co.uk</a></li>
+					</ul>
+				<h3 id="toc-5">Insurance</h3>
+					<p>Contact your home insurance company as soon as possible. They may offer advice about replacement or cleansing damaged items.</p>
+				<h3 id="toc-6">External flooding</h3>
+				<p>If there was flooding to gardens, paved areas and other external areas:</p>
+				<ul>
+					<li>you can clean and disinfect patios and driveways &nbsp;but keep off these areas for three hours after disinfection</li>
+					<li>it is not usual to disinfect cultivated areas as this can kill plants, if you do, use a very mild disinfectant&nbsp;</li>
+					<li>don't hose the garden as this will saturate the ground and prolong the life of the bacteria</li>
+					<li>do not dig or rake the affected area as this will spread contamination further into the soil where lack of light will prolong the life of bacteria</li>
+					<li>it is best to let nature take its course as ultra violet radiation in sunlight is very effective in killing bacteria</li>
+				</ul>
+				<h3 id="toc-7">Compensation claims</h3>
+				<p>For compensation claims about water or sewerage, ask NI Water for a claim form:</p>
+				<ul>
+					<li>0845 744 0088</li>
+					<li><a href="/contacts/contacts-az/northern-ireland-water">Northern Ireland Water</a></li>
+				</ul>
+				<h3 id="toc-8">Emergency financial payments</h3>
+				<p>If your home is flooded due to heavy rainfall, you can contact the local council and ask about &nbsp;their emergency payments scheme.</p>
+				<p>A householder could receive £1, 000. &nbsp;The&nbsp;payment is to make a home fit to live in as quickly as possible. It is not compensation.</p>
+				<ul>
+					<li><a href="/contacts/local-councils-in-northern-ireland">Local councils in Northern Ireland</a></li>
+				</ul>
+		</div>		
+		<H2 style="color:#0081a2; font-weight: 800; line-height: 36px; margin: 0 0 24px; text-align: center;"><A name="section2">Hurricanes</A></H2>
+		...section 2...
+		<H2 style="color:#0081a2; font-weight: 800; line-height: 36px; margin: 0 0 24px; text-align: center;"><A name="section3">Fire</A></H2>
+		...section 2.1...
+		<H2 style="color:#0081a2; font-weight: 800; line-height: 36px; margin: 0 0 24px; text-align: center;"><A name="section4">Fire</A></H2>
+		...section 2.1...
+				<p> some text</p>
+	</body>
+</html>
