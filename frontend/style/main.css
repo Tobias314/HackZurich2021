@@ -6,7 +6,19 @@ margin: 0;
 height: 100%;
 width: 100%;
 }
+/*tables*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #DDD;
+}
+
+tr:hover {background-color: #D6EEEE;}
 /* This is for styling of log in button*/
 /* Full-width input fields */
 input[type=text], input[type=password] {
