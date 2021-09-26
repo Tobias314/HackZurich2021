@@ -109,84 +109,90 @@
 			</div>
 	   </div>
 
-	<script>
 	
-
-
-
-		var down = document.getElementById("Report_DOWN");
-
-			// Create a break line element
-			var br = document.createElement("br");
-			function Report_DOWN() {
-
-			// Create a form synamically
-			var form = document.createElement("form");
-			form.setAttribute("method", "post");
-			form.setAttribute("action", "submit.php");
-
-			// Create an input element for Full Name
-			var FN = document.createElement("input");
-			FN.setAttribute("type", "text");
-			FN.setAttribute("name", "FullName");
-			FN.setAttribute("placeholder", "Full Name");
-
-
-			 // Create an input element for emailID
-			 var EID = document.createElement("input");
-			 EID.setAttribute("type", "text");
-			 EID.setAttribute("name", "emailID");
-			 EID.setAttribute("placeholder", "E-Mail ID");
-
-			  // Create an input element for Location
-			  var PWD = document.createElement("input");
-			  PWD.setAttribute("type", "text");
-			  PWD.setAttribute("name", "Location");
-			  PWD.setAttribute("placeholder", "Location");
-
-			   // Create an input element for type of risk
-			   var RPWD = document.createElement("input");
-			   RPWD.setAttribute("type", "text");
-			   RPWD.setAttribute("name", "Type of Risk");
-			   RPWD.setAttribute("placeholder", "Type of Risk: Flood, Fire, Hurricane ect.");
-                // create a submit button
-                var s = document.createElement("input");
-                s.setAttribute("type", "submit");
-                s.setAttribute("value", "Submit");
-                 // HIDING THE FORM ONCE POSTED
-				 //var theFormItself = document.getElementById('Report_DOWN');
-				//theFormItself.style.display = 'none';
-                // Append the full name input to the form
-                form.appendChild(FN);
-
-                // Inserting a line break
-                form.appendChild(br.cloneNode());
-
-
-                // Append the emailID to the form
-                form.appendChild(EID);
-                form.appendChild(br.cloneNode());
-
-                // Append the Password to the form
-                form.appendChild(PWD);
-                form.appendChild(br.cloneNode());
-
-                // Append the ReEnterPassword to the form
-                form.appendChild(RPWD);
-                form.appendChild(br.cloneNode());
-
-                // Append the submit button to the form
-                form.appendChild(s);
-
-                document.getElementsByTagName("body")[0]
-               .appendChild(form);
-
-            }
-
-
-			function refreshPage(){
-				window.location.reload();
-			}
-</script>
+  <!-- FOOTER -->
+		  <footer class="container">
+			<p class="float-right"><a href="#">Back to top</a></p>
+			<p>© 2021 HackZurich Entry · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+		  </footer>
   </body>
+	  <script>
+		
+
+
+
+			var down = document.getElementById("Report_DOWN");
+
+				// Create a break line element
+				var br = document.createElement("br");
+				function Report_DOWN() {
+
+				// Create a form synamically
+				var form = document.createElement("form");
+				form.setAttribute("method", "post");
+				form.setAttribute("action", "submit.php");
+
+				// Create an input element for Full Name
+				var FN = document.createElement("input");
+				FN.setAttribute("type", "text");
+				FN.setAttribute("name", "FullName");
+				FN.setAttribute("placeholder", "Full Name");
+
+
+				 // Create an input element for emailID
+				 var EID = document.createElement("input");
+				 EID.setAttribute("type", "text");
+				 EID.setAttribute("name", "emailID");
+				 EID.setAttribute("placeholder", "E-Mail ID");
+
+				  // Create an input element for Location
+				  var PWD = document.createElement("input");
+				  PWD.setAttribute("type", "text");
+				  PWD.setAttribute("name", "Location");
+				  PWD.setAttribute("placeholder", "Location");
+
+				   // Create an input element for type of risk
+				   var RPWD = document.createElement("input");
+				   RPWD.setAttribute("type", "text");
+				   RPWD.setAttribute("name", "Type of Risk");
+				   RPWD.setAttribute("placeholder", "Type of Risk: Flood, Fire, Hurricane ect.");
+					// create a submit button
+					var s = document.createElement("input");
+					s.setAttribute("type", "submit");
+					s.setAttribute("value", "Submit");
+					 // HIDING THE FORM ONCE POSTED
+					 //var theFormItself = document.getElementById('Report_DOWN');
+					//theFormItself.style.display = 'none';
+					// Append the full name input to the form
+					form.appendChild(FN);
+
+					// Inserting a line break
+					form.appendChild(br.cloneNode());
+
+
+					// Append the emailID to the form
+					form.appendChild(EID);
+					form.appendChild(br.cloneNode());
+
+					// Append the Password to the form
+					form.appendChild(PWD);
+					form.appendChild(br.cloneNode());
+
+					// Append the ReEnterPassword to the form
+					form.appendChild(RPWD);
+					form.appendChild(br.cloneNode());
+
+					// Append the submit button to the form
+					form.appendChild(s);
+
+					document.getElementsByTagName("body")[0]
+				   .appendChild(form);
+
+				}
+
+
+				function refreshPage(){
+					window.location.reload();
+				}
+	</script>
 </html>
