@@ -83,7 +83,6 @@
 	</div>	
   <!--MAP and updates-->
     <div id="viewDiv" style="padding-top:10px; padding-bottom:20px;height:75%; width:75%; float:left"></div>
-    <!--<div id="viewDiv2" style="padding-top:10px; padding-bottom:20px;height:75%; width:75%; float:left"></div>-->
 	<div class="card" style="width: 25%; max-height: float:right">
 		  <div class="card-body">
 			<h4 class="card-title">Recent Alerts </h4>
@@ -109,12 +108,26 @@
 			</div>
 	   </div>
 
+	<div id="viewDiv2Container" hidden>
+    	<div id="viewDiv2" style="padding-top:10px; padding-bottom:20px;height:50%; width:30%; float:left"></div>
+		<form method="post" action="http://localhost:8000/locationentry" target="votar">
+				<input type="text" name="fullName"  placeholder="Full Name">
+				<input type="text" name="emailID" placeholder="E-Mail ID">
+				<input type="text" name="location" placeholder="Location">
+				<input type="text" name="typeOfRisk" placeholder="Type of Risk: Flood, Fire, Hurricane ect.">
+				<input type="hidden" name="longitude" id="formLongitude">
+				<input type="submit" value="Submit">
+		</form>
+	</div>
+
+
 	
   <!-- FOOTER -->
 		  <footer class="container">
 			<p class="float-right"><a href="#">Back to top</a></p>
 			<p>© 2021 HackZurich Entry · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
 		  </footer>
+		  <iframe name="votar" style="display:none;"></iframe>
   </body>
 	  <script>
 		
@@ -127,68 +140,9 @@
 				var br = document.createElement("br");
 				function Report_DOWN() {
 
-				// Create a form synamically
-				var form = document.createElement("form");
-				form.setAttribute("method", "post");
-				form.setAttribute("action", "submit.php");
-
-				// Create an input element for Full Name
-				var FN = document.createElement("input");
-				FN.setAttribute("type", "text");
-				FN.setAttribute("name", "FullName");
-				FN.setAttribute("placeholder", "Full Name");
-
-
-				 // Create an input element for emailID
-				 var EID = document.createElement("input");
-				 EID.setAttribute("type", "text");
-				 EID.setAttribute("name", "emailID");
-				 EID.setAttribute("placeholder", "E-Mail ID");
-
-				  // Create an input element for Location
-				  var PWD = document.createElement("input");
-				  PWD.setAttribute("type", "text");
-				  PWD.setAttribute("name", "Location");
-				  PWD.setAttribute("placeholder", "Location");
-
-				   // Create an input element for type of risk
-				   var RPWD = document.createElement("input");
-				   RPWD.setAttribute("type", "text");
-				   RPWD.setAttribute("name", "Type of Risk");
-				   RPWD.setAttribute("placeholder", "Type of Risk: Flood, Fire, Hurricane ect.");
-					// create a submit button
-					var s = document.createElement("input");
-					s.setAttribute("type", "submit");
-					s.setAttribute("value", "Submit");
-					 // HIDING THE FORM ONCE POSTED
-					 //var theFormItself = document.getElementById('Report_DOWN');
-					//theFormItself.style.display = 'none';
-					// Append the full name input to the form
-					form.appendChild(FN);
-
-					// Inserting a line break
-					form.appendChild(br.cloneNode());
-
-
-					// Append the emailID to the form
-					form.appendChild(EID);
-					form.appendChild(br.cloneNode());
-
-					// Append the Password to the form
-					form.appendChild(PWD);
-					form.appendChild(br.cloneNode());
-
-					// Append the ReEnterPassword to the form
-					form.appendChild(RPWD);
-					form.appendChild(br.cloneNode());
-
-					// Append the submit button to the form
-					form.appendChild(s);
-
-					document.getElementsByTagName("body")[0]
-				   .appendChild(form);
-
-				}
+				var map2Container = document.getElementById("viewDiv2Container");
+				map2Container.hidden = !map2Container.hidden;
+			}
 
 
 				function refreshPage(){
