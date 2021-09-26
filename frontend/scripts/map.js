@@ -9,10 +9,16 @@ require(["esri/config",
    "esri/rest/networkService",
    "esri/Graphic",
    "esri/layers/GraphicsLayer",
+   "esri/widgets/Track",
+   "esri/Graphic"
+
   ],
  function (esriConfig,Map, MapView,Basemap, VectorTileLayer, 
-  serviceArea, ServiceAreaParams, FeatureSet, networkService, Graphic, GraphicsLayer) {
+  serviceArea, ServiceAreaParams, FeatureSet, networkService, Graphic, GraphicsLayer, Track) {
     esriConfig.apiKey = "AAPK172fad7fe111481a8da5008626ae12a7qj62qoE60E7f9U7R9jV7ZFl1VVr2EEeIuQ3yoJ04Zag7rctohS6J7qGbhA3ELnN_";
+
+    var currentLocation = null;
+    var timeTillFlood = 5;
 
     const baseMapeVectorTileLayer = new VectorTileLayer({
         portalItem: {
@@ -37,6 +43,45 @@ require(["esri/config",
       zoom: 13, // Zoom level
       container: "viewDiv" // Div element
     });
+
+    const track = new Track({
+      view: view,
+      goToLocationEnabled: true,
+      graphic: new Graphic({
+        symbol: {
+          type: "simple-marker",
+          size: "12px",
+          color: "green",
+          outline: {
+            color: "#efefef",
+            width: "1.5px"
+          }
+        }
+      }),
+      useHeadingEnabled: false
+    });
+    view.when(() => {
+
+      let prevLocation = view.center;
+
+          track.on("track", () => {
+            currentLocation = track.graphic.geometry;
+            view.goTo({
+              center: location,
+              scale: 2500,
+            }).catch((error) => {
+              if (error.name != "AbortError"){
+                console.error(error);
+              }
+            });
+            const locationGraphic = createGraphic(currentLocation);
+            solveServiceArea(serviceAreaUrl, locationGraphic, [timeTillFlood], view.spatialReference);
+            //track.start()
+          });
+
+      track.start()
+    })
+    view.ui.add(track, "top-left");
 
     const graphicsLayer = new GraphicsLayer();
     map.add(graphicsLayer);
@@ -80,7 +125,7 @@ require(["esri/config",
 
     view.on("click", function(event){
         const locationGraphic = createGraphic(event.mapPoint);
-        const timeCutoffs = [5]; // Minutes
+        const timeCutoffs = [timeTillFlood]; // Minutes
         solveServiceArea(serviceAreaUrl, locationGraphic, timeCutoffs, view.spatialReference);
     });
 

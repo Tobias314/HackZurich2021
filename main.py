@@ -9,10 +9,19 @@ from sse_starlette.sse import EventSourceResponse
 MESSAGE_STREAM_DELAY = 1  # second
 MESSAGE_STREAM_RETRY_TIMEOUT = 15000  # milisecond
 
-from watersimulation.floodfill import flood_fill_rivers_height_map, bool_raster_to_polygon
-from formatting import polygons_to_json
+from backend.watersimulation.floodfill import flood_fill_rivers_height_map, bool_raster_to_polygon
+from backend.formatting import polygons_to_json
 
-app = FastAPI()
+from starlette.applications import Starlette
+from starlette.routing import Mount
+from starlette.staticfiles import StaticFiles
+
+
+routes = [
+    Mount('/frontend', app=StaticFiles(directory='frontend'), name="frontend"),
+]
+
+app = FastAPI(routes=routes)
 
 origins = [
     "http://localhost",
@@ -30,7 +39,7 @@ app.add_middleware(
 )
 
 
-height_map_path = "../../data/DTM_Ahrweiler.tif"
+height_map_path = "../data/DTM_Ahrweiler.tif"
 FLOOD_HEIGHT = 5
 
 height_map_data_set = rio.open(height_map_path)
