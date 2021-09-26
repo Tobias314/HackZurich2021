@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.middleware.cors import CORSMiddleware
 from numpy import flexible
 import rasterio as rio
@@ -57,6 +57,12 @@ def flood_polygon():
     polygons = bool_raster_to_polygon(flooded_map, affine=height_map_data_set.transform, transformer=hm_webmap_crs_transformer)
     polygons = polygons_to_json(polygons=polygons)
     return polygons
+    
+    
+@app.post("/locationentry")
+async def locationentry(FullName: str = Form(...), emailID: str = Form(...), TypeOfRisk: str = Form(...)):
+    print(FullName)
+    return None
 
 
 @app.get('/stream')

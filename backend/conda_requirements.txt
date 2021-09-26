@@ -8,3 +8,4 @@ osmnx
 fastapi
 uvicorn
 cv2
+python-multipart

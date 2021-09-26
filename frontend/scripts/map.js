@@ -68,7 +68,7 @@ require(["esri/config",
             currentLocation = track.graphic.geometry;
             view.goTo({
               center: location,
-              scale: 2500,
+              scale: 7000,
             }).catch((error) => {
               if (error.name != "AbortError"){
                 console.error(error);
