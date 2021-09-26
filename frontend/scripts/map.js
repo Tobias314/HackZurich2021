@@ -63,6 +63,8 @@ require(["esri/config",
     view.when(() => {
 
       let prevLocation = view.center;
+      loadFloodPolygon()
+      loadLocationEntries()
 
           track.on("track", () => {
             currentLocation = track.graphic.geometry;
@@ -85,12 +87,24 @@ require(["esri/config",
 
     const graphicsLayer = new GraphicsLayer();
     map.add(graphicsLayer);
+
+    const graphicsLayerPoints = new GraphicsLayer();
+    map.add(graphicsLayerPoints);
 	
     const serviceAreaUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/ServiceAreas/NAServer/ServiceArea_World";
 
     var alarmButton = document.getElementById("Alarm");
     alarmButton.addEventListener("click", async function() {
-		
+      loadFloodPolygon()
+    })
+
+    view.on("click", function(event){
+        const locationGraphic = createGraphic(event.mapPoint);
+        const timeCutoffs = [timeTillFlood]; // Minutes
+        solveServiceArea(serviceAreaUrl, locationGraphic, timeCutoffs, view.spatialReference);
+    });
+
+    async function loadFloodPolygon(){
       // trying to pull JSON file
       const response = await fetch('http://localhost:8000/floodarea');
       const polygonJson = await response.json(); //extract JSON from the http response
@@ -101,7 +115,6 @@ require(["esri/config",
         rings.push(polygon.shell);
         polygon.holes.forEach(hole => rings.push(hole));
       });
-      console.log(rings);
        //Create a polygon geometry
 
       const polygon = {
@@ -121,13 +134,47 @@ require(["esri/config",
         symbol: simpleFillSymbol,
       });
       graphicsLayer.add(polygonGraphic);
-    })
+    }
 
-    view.on("click", function(event){
-        const locationGraphic = createGraphic(event.mapPoint);
-        const timeCutoffs = [timeTillFlood]; // Minutes
-        solveServiceArea(serviceAreaUrl, locationGraphic, timeCutoffs, view.spatialReference);
-    });
+    async function loadLocationEntries(){
+      const response = await fetch('http://localhost:8000/locationentries');
+      const locationEntries = await response.json(); //extract JSON from the http response
+      // do something with myJson
+      //mydata = JSON.parse(myJson);
+      console.log(locationEntries)
+      locationEntries.forEach(locEntry => {
+        const point = { //Create a point
+          type: "point",
+          longitude: locEntry.longitude,
+          latitude: locEntry.latitude
+        };
+        const popupTemplate = {
+          title: "{Type}",
+          content: "{Submitter}"
+        }
+        const attributes = {
+            Type: locEntry.typeOfRisk,
+            Submitter: "Submitted by: " + locEntry.fullName + " (" + locEntry.emailID +")"
+        }
+        const simpleMarkerSymbol = {
+            type: "simple-marker",
+            color: [226, 119, 40],  // Orange
+            outline: {
+                color: [255, 255, 255], // White
+                width: 1
+            }
+        };
+          const pointGraphic = new Graphic({
+            geometry: point,
+            symbol: simpleMarkerSymbol,
+            attributes: attributes,
+            popupTemplate: popupTemplate
+        });
+        graphicsLayerPoints.add(pointGraphic);
+      });
+    }
+
+
 
     function createGraphic(point) {
         view.graphics.removeAll();

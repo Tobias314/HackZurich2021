@@ -51,6 +51,12 @@ require(["esri/config",
     });
 
     function createGraphic(lat, long){
+
+      var formLongitude = document.getElementById("formLongitude")
+      formLongitude.setAttribute("value", long)
+      var formLatitude = document.getElementById("formLatitude")
+      formLatitude.setAttribute("value", lat)
+
       // First create a point geometry
       var point = {
         type: "point", // autocasts as new Point()
@@ -75,10 +81,11 @@ require(["esri/config",
     }
 
 
-    view.on("double-click", function(event){
-      createGraphic2(event.mapPoint.latitude, event.mapPoint.longitude);
-    });
+    //view.on("double-click", function(event){
+    //  createGraphic2(event.mapPoint.latitude, event.mapPoint.longitude);
+    //});
 
+    /*
     function createGraphic2(lat, long){
       // First create a point geometry
       var point = {
@@ -101,46 +108,5 @@ require(["esri/config",
 
       // Add the graphics to the view's graphics layer
       view.graphics.add(pointGraphic);
-    }
-
-
-      async function solveServiceArea(url, locationGraphic, timeCutoffs, outSpatialReference) {
-        // Create one or more locations (facilities) to solve for
-        const featureSet = new FeatureSet({
-            features: [locationGraphic]
-          });
-          const networkDescription = await networkService.fetchServiceDescription(url);
-          console.log(networkDescription)
-          // Travel mode should be walking
-          travelMode = networkDescription.supportedTravelModes.find(
-              (travelMode) => travelMode.name === "Walking Time"
-          );
-          // Set all of the input parameters for the service
-          const taskParameters = new ServiceAreaParams({
-            facilities: featureSet,
-            defaultBreaks: timeCutoffs,
-            travelMode,
-            trimOuterPolygon: true,
-            outSpatialReference: outSpatialReference
-          });
-
-
-        return serviceArea.solve(url, taskParameters)
-          .then(function(result){
-            if (result.serviceAreaPolygons.length) {
-              // Draw each service area polygon
-              result.serviceAreaPolygons.forEach(function(graphic){
-                graphic.symbol = {
-                  type: "simple-fill",
-                  color: "rgba(255,50,50,.25)"
-                }
-                view.graphics.add(graphic,0);
-              });
-            }
-          }, function(error){
-            console.log(error);
-          });
-
-      }
-
+    }*/
 });

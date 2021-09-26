@@ -20,6 +20,11 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script>
+			if ( window.history.replaceState ) {
+				window.history.replaceState( null, null, window.location.href );
+			}
+		</script>		
   </head>
 
   <main>
@@ -105,7 +110,7 @@
 			</div>
 			
 			<!--Alert button-->
-			<div  class="action_button alarm" id="Alarm" style=" max-width:100%;padding: 30px">
+			<div  class="action_button alarm" id="Alarm" style=" max-width:100%;padding: 30px" hidden>
 				<button> Show the flooded area. </button>
 			</div>
 			
@@ -138,6 +143,7 @@
 				<input type="text" name="location" placeholder="Location">
 				<input type="text" name="typeOfRisk" placeholder="Type of Risk: Flood, Fire, Hurricane ect.">
 				<input type="hidden" name="longitude" id="formLongitude">
+				<input type="hidden" name="latitude" id="formLatitude">
 				<input type="submit" value="Submit">
 		</form>
 	</div>

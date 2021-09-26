@@ -46,6 +46,8 @@ height_map_data_set = rio.open(height_map_path)
 webmap_crs =  CRS.from_epsg(4326)
 hm_webmap_crs_transformer = Transformer.from_crs(height_map_data_set.crs, webmap_crs, always_xy=True)
 
+location_entries = []
+
 
 @app.get("/")
 def read_root():
@@ -60,10 +62,15 @@ def flood_polygon():
     
     
 @app.post("/locationentry")
-async def locationentry(FullName: str = Form(...), emailID: str = Form(...), TypeOfRisk: str = Form(...)):
-    print(FullName)
-    return None
+async def locationentry(fullName: str = Form(...), emailID: str = Form(...), location: str = Form(...), typeOfRisk: str = Form(...), 
+                        longitude: float = Form(...), latitude: float = Form(...)):
+    locentry = {"fullName": fullName, "emailID": emailID, "location": location, "typeOfRisk": typeOfRisk,
+                 "longitude": longitude, "latitude": latitude}
+    location_entries.append(locentry)
 
+@app.get("/locationentries")
+def locationentries():
+    return location_entries
 
 @app.get('/stream')
 async def message_stream(request: Request):
