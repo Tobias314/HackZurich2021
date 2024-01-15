@@ -1,2 +1,2 @@
 # HackZurich2021
-TODO
+Hack Zurich 2021 project for a flood warning app. 
